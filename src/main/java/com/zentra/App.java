@@ -12,8 +12,9 @@ public class App {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         // Create a data stream from a socket (for testing)
-        DataStream<String> text = env.socketTextStream("localhost", 9999);
+        //data stream from a list
 
+        DataStream<String> text = env.fromData("Hello World", "Flink Streaming", "Hello Flink");
         // Process the stream: split into words, count occurrences
         DataStream<Tuple2<String, Integer>> counts =
                 text.flatMap(new Tokenizer())
